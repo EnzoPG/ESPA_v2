@@ -1,0 +1,33 @@
+<h5 class="col-12 mb-3">Cadastro de Veículos</h5>
+<div class="col-12">
+  <div class="form-group">
+    <label for="marca">Marca</label>
+    <select [(ngModel)]="veiculo.marca" class="form-control" id="marca">
+      <option *ngFor="let item of marcas">{{item}}</option>
+    </select>
+  </div>
+</div>
+<div class="col-12">
+  <div class="form-group">
+    <label for="modelo">Modelo</label>
+    <input [(ngModel)]="veiculo.modelo" class="form-control" id="modelo">
+  </div>
+</div>
+<div class="col-12">
+  <div class="form-group">
+    <label for="valor">Valor</label>
+    <input appNumero [(ngModel)]="veiculo.valor" (ngModelChange)="veiculo.ipva=$event*ipva" class="form-control text-right"  id="valor">
+  </div>
+</div>
+<div class="col-12">
+  <div class="form-group">
+    <label for="tipo">Tipo</label>
+    <select [(ngModel)]="veiculo.tipo" class="form-control" id="tipo">
+      <option *ngFor="let v_tipo of tipos">{{v_tipo}}</option>
+    </select>
+  </div>
+</div>
+<div class="col-12">
+  <button (click)="salvar()" [disabled]="!(veiculo.marca && veiculo.modelo && veiculo.valor)" class="btn btn-success mr-3">Salvar</button>
+  <button (click)="reset()" class="btn btn-dark">Limpar Dados Preenchidos</button>
+</div>
